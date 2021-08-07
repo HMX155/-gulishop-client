@@ -27,3 +27,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### git操作笔记
 ## git init     git remote add origin https://github.com/HMX155/-gulishop-client.git     
 ## git add .    git commit -m"first"    git push origin     git push origin master
+## 哈哈哈
