@@ -19,17 +19,29 @@ export default new VueRouter({
             component:Home
         },
         {
-            path:'/search',
+            path:'/search/:keyword',   //params参数需要提前占位
             component:Search
         },
         {
             path:'/login',
-            component:Login
+            component:Login,
+            //路由配置项中的元配置项 可以配置我们所需要的所有数据
+            meta:{
+                isHidden:true
+            }
         },
         {
             path:'/register',
-            component:Register
+            component:Register,
+            meta:{
+                isHidden:true
+            }
         },
+        //路由重定向
+        {
+            path:'/',
+            redirect:'/home'
+        }
     ]   //配置路由
 })
 

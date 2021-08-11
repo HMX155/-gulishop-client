@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h2>App组件111</h2>
-    <Header/>
+    <Header />
     <router-view></router-view>
-    <Footer/>
+    <!-- 可以这样写，但是如果后期有很多页面都不需要展示Footer  这里面就会写的很长 -->
+    <!-- <Footer v-show=" $route.path !=='/login' && $route.path !== 'register' " /> -->
+    <Footer v-show="!$route.meta.isHidden" />
   </div>
 </template>
 
@@ -15,7 +16,8 @@ export default {
   components:{
     Header,
     Footer
-  }
+  },
+ 
 };
 </script>
 
