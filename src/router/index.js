@@ -13,34 +13,36 @@ import Register from '@/pages/Register'
 
 //需要想外暴露一个路由器对象
 export default new VueRouter({
-    routes:[
+    routes: [
         {
-            path:'/home',
-            component:Home
+            path: '/home',
+            component: Home
         },
         {
-            path:'/search/:keyword',   //params参数需要提前占位
-            component:Search
+            path: '/search/:keyword',   //params参数需要提前占位
+            component: Search,
+            name: "search" , //命名路由
+
         },
         {
-            path:'/login',
-            component:Login,
+            path: '/login',
+            component: Login,
             //路由配置项中的元配置项 可以配置我们所需要的所有数据
-            meta:{
-                isHidden:true
+            meta: {
+                isHidden: true
             }
         },
         {
-            path:'/register',
-            component:Register,
-            meta:{
-                isHidden:true
+            path: '/register',
+            component: Register,
+            meta: {
+                isHidden: true
             }
         },
         //路由重定向
         {
-            path:'/',
-            redirect:'/home'
+            path: '/',
+            redirect: '/home'
         }
     ]   //配置路由
 })

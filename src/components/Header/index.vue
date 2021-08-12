@@ -77,9 +77,9 @@ export default {
   },
   methods: {
     toSearch() {
-      this.$router.push(
-        "/search/" + this.keyword + "?keyword1=" + this.keyword.toUpperCase()
-      );
+      // this.$router.push(
+      //   "/search/" + this.keyword + "?keyword1=" + this.keyword.toUpperCase()
+      // );
 
       //一、路由传参种类：params参数   query参数
       //params参数属于路径的一部分，路由当中匹配的时候，是要照顾这个参数
@@ -88,6 +88,31 @@ export default {
 
       //二、路由路径带参数的三种写法
       //1、字符串写法
+      // this.$router.push("/search/" + this.keyword + "?keyword1=" + this.keyword.toUpperCase());
+
+      //2、模版字符串写法
+      // this.$router.push(`/search/${this.keyword}?keyword1=${this.keyword.toUpperCase()}`)
+
+      //3.对象写法
+      // this.$router.push({
+      //   name: "search",
+      //   params: { keyword: this.keyword },
+      //   query: { keyword1: this.keyword.toUpperCase() },
+      // });
+
+      //面试1
+      //指定params参数时可不可以用path和params配置的组合（对象写法）
+      //答：不可以  只能用name与params配合
+      //如果传递的参数只有query参数，没有params参数，那么我们可以不用name，可以使用path
+      //如果传递的参数包含了params参数，就不能使用path
+
+      //结论：对象写法，以后最好用name，因为那么既能和params配合，也能与query配合
+      this.$router.push({
+        name: "search",
+        params: { keyword: this.keyword },
+        // path: "/search",
+        query: { keyword1: this.keyword.toUpperCase() },
+      });
     },
   },
 };
