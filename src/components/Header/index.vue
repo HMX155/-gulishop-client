@@ -107,12 +107,30 @@ export default {
       //如果传递的参数包含了params参数，就不能使用path
 
       //结论：对象写法，以后最好用name，因为那么既能和params配合，也能与query配合
+      // this.$router.push({
+      //   name: "search",
+      //   params: { keyword: this.keyword },
+      //   // path: "/search",
+      //   query: { keyword1: this.keyword.toUpperCase() },
+      // });
+
+
+      //面试2  如何让params参数 可传可不传
+      //path: '/search/:keyword?'//在路由中占位参数时后面加？
+
+      //面试3  如果中name与params配置，但是params中数据有一个“”,无法跳转，路径会出问题
+      //解决：
+      //1、不传params参数
+      //2、首先必须在params参数可传可不传的前提下，当传递的参数为空字符串时，传滴成undefined，就不出问题
       this.$router.push({
         name: "search",
-        params: { keyword: this.keyword },
-        // path: "/search",
+        params: { keyword: '' || undefined },
         query: { keyword1: this.keyword.toUpperCase() },
       });
+
+      //面试4：路由组件能不能传递props数据
+      //可以，可以将query或者params参数映射成为props传递给路由组件
+      //实现:props:(route)=>({keyword:route.params.keyword,keyword2:route.query.keyword})
     },
   },
 };

@@ -1,9 +1,8 @@
 <template>
   <div>
-    Search
-    params: {{$route.params.keyword}}
-    <br>
-    query: {{$route.query.keyword1}}
+    Search params: {{ $route.params.keyword }} ------ {{ keyword }}
+    <br />
+    query: {{ $route.query.keyword1 }} ------ {{ keyword2 }}
   </div>
 </template>
 
