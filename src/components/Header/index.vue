@@ -124,7 +124,7 @@ export default {
       //2、首先必须在params参数可传可不传的前提下，当传递的参数为空字符串时，传滴成undefined，就不出问题
       this.$router.push({
         name: "search",
-        params: { keyword: '' || undefined },
+        params: { keyword: this.keyword || undefined },
         query: { keyword1: this.keyword.toUpperCase() },
       });
 
