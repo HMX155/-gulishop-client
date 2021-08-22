@@ -114,7 +114,6 @@ export default {
       //   query: { keyword1: this.keyword.toUpperCase() },
       // });
 
-
       //面试2  如何让params参数 可传可不传
       //path: '/search/:keyword?'//在路由中占位参数时后面加？
 
@@ -122,15 +121,35 @@ export default {
       //解决：
       //1、不传params参数
       //2、首先必须在params参数可传可不传的前提下，当传递的参数为空字符串时，传滴成undefined，就不出问题
+      // this.$router
+      //   .push({
+      //     name: "search",
+      //     params: { keyword: this.keyword || undefined },
+      //     query: { keyword1: this.keyword.toUpperCase() },
+      //   })
+      //   .catch(() => {});   //如果后期用到 push  或者  replace 还要继续写，因此这个办法不好
+
+      //面试4：路由组件能不能传递props数据
+      //可以，可以将query或者params参数映射成为props传递给路由组件
+      //实现:props:(route)=>({keyword:route.params.keyword,keyword2:route.query.keyword})
+
+      //面试问题 5 ：vue-router使用的是3.1.0以上的版本，如果多次点击使用编程时导航，且参数未发生变化
+      //  会引发NavigationDuplicated的警告
+      //解决办法一：不好
+      // this.$router
+      //   .push({
+      //     name: "search",
+      //     params: { keyword: this.keyword || undefined },
+      //     query: { keyword1: this.keyword.toUpperCase() },
+      //   })
+      //   .catch(() => {}); //如果后期用到 push  或者  replace 还要继续写，因此这个办法不好
+
+      //解决办法二：修改router实例原型上的方法，达到一劳永逸的效果
       this.$router.push({
         name: "search",
         params: { keyword: this.keyword || undefined },
         query: { keyword1: this.keyword.toUpperCase() },
       });
-
-      //面试4：路由组件能不能传递props数据
-      //可以，可以将query或者params参数映射成为props传递给路由组件
-      //实现:props:(route)=>({keyword:route.params.keyword,keyword2:route.query.keyword})
     },
   },
 };
